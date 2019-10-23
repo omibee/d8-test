@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Main Module for Pedro Botelho Overrides Module.
+ */
+
+function pedro_botelho_overrides_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Getting form id
+  //die($form_id);
+
+  if ($form_id === 'node_post_form') {
+    dd($form);
+  }
+  $form['concordo_checkbox'] = [
+    '#type'          => 'checkbox',
+    '#title'         => 'Concordo com a publicação',
+    '#required'      => TRUE,
+    '#default_value' => FALSE,
+  ];
+  //$form['#validate'][] = 'pedro_botelho_post_form_validate';
+
+}
+
+/*
+ * Help function to validate if checkbox is checked.
+ */
+function pedro_botelho_post_form_validate($form, FormStateInterface &$form_state) {
+  // Get the Checkbox value.
+  $concordo_checkbox = $form_state->getValue('concordo_checkbox');
+  $form_state->setErrorByName('concordo_checkbox', 'Tem de concordar com o envio dos dados.');
+}
+

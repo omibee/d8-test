@@ -1,0 +1,6 @@
+name: Pedro Botelho Overrides
+type: module
+description: 'It Will Override things'
+package: omibee
+core: 8.x
+
